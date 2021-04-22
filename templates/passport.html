@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'home.css') }}">
+</head>
+<body>
+    <div class="nav">
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+        <div class="header">
+            <h4>COVID-19</h4>
+        </div>
+        <ul class="nav-items">
+            <li>
+                <a href="/">
+                    <span class="title">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="title">Profile</span>
+                </a>
+            </li>
+            {% if status is true %}
+            <li>
+                <a href="#">
+                    <span class="title">Passport</span>
+                </a>
+            </li>
+            {% endif %}
+            <li>
+                <a href="#">
+                    <span class="title">Help</span>
+                </a>
+            </li>
+            <li>
+                <a href="/signout">
+                    <span class="title">Sign out</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <h1 class="welcomeHeader">{{ user['fname'] }} {{ user['lname'] }}</h1>
+    <div class="details">
+        <div class="item1"><img src="{{ url_for('static', filename = 'avatar.jpg') }}" alt=""></div>
+        <div class="item2">
+            <div class="contentWrapper">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Example&color=0078be" class="qrcode" alt="passport">
+            </div>
+        </div>
+    </div>
+    <script src = "{{ url_for('static', filename = 'home.js') }}"></script>
+</body>
+</html>
